@@ -1,0 +1,30 @@
+<clickhouse>
+    <keeper_server>
+        <server_id from_env="POD_SEQ"/>
+        <tcp_port>2181</tcp_port>
+        <log_storage_path>/var/lib/clickhouse/keeper/log</log_storage_path>
+        <snapshot_storage_path>/var/lib/clickhouse/keeper/snapshots</snapshot_storage_path>
+        <coordination_settings>
+            <operation_timeout_ms>10000</operation_timeout_ms>
+            <session_timeout_ms>30000</session_timeout_ms>
+            <raft_logs_level>information</raft_logs_level>
+        </coordination_settings>
+        <raft_configuration>
+            <server>
+                <id>1</id>
+                <hostname>clickhouse-0.clickhouse</hostname>
+                <port>9444</port>
+            </server>
+            <server>
+                <id>2</id>
+                <hostname>clickhouse-1.clickhouse</hostname>
+                <port>9444</port>
+            </server>
+            <server>
+                <id>3</id>
+                <hostname>clickhouse-2.clickhouse</hostname>
+                <port>9444</port>
+            </server>
+        </raft_configuration>
+    </keeper_server>
+</clickhouse>

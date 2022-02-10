@@ -1,0 +1,11 @@
+= clickhouse
+
+Clickhouse cluster for local development. Tested on https://github.com/k3s-io/k3s[k3s].
+
+Run with official Docker image:
+
+    kubectl apply -k ./overlays/v22.1
+
+Run with custom-built AARM64 image (Apple M1):
+
+    kubectl apply -k ./overlays/v22.2-aarm64

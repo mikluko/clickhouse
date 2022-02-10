@@ -1,0 +1,47 @@
+<clickhouse>
+    <macros>
+        <cluster>local</cluster>
+        <replica from_env="POD_SEQ"/>
+        <layer from_env="POD_SEQ"/>
+        <shard from_env="POD_SEQ"/>
+    </macros>
+    <remote_servers>
+        <local>
+            <shard>
+                <replica>
+                    <host>clickhouse-0.clickhouse</host>
+                    <port>9000</port>
+                </replica>
+            </shard>
+            <shard>
+                <replica>
+                    <host>clickhouse-1.clickhouse</host>
+                    <port>9000</port>
+                </replica>
+            </shard>
+            <shard>
+                <replica>
+                    <host>clickhouse-2.clickhouse</host>
+                    <port>9000</port>
+                </replica>
+            </shard>
+        </local>
+    </remote_servers>
+    <zookeeper>
+        <node index="1">
+            <host>clickhouse-0.clickhouse</host>
+            <port>2181</port>
+        </node>
+        <node index="2">
+            <host>clickhouse-1.clickhouse</host>
+            <port>2181</port>
+        </node>
+        <node index="3">
+            <host>clickhouse-2.clickhouse</host>
+            <port>2181</port>
+        </node>
+    </zookeeper>
+    <distributed_ddl>
+        <path>/clickhouse/clickhouse/task_queue/ddl</path>
+    </distributed_ddl>
+</clickhouse>
