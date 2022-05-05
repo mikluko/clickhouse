@@ -5,16 +5,21 @@ commonLabels:
   app.kubernetes.io/name: clickhouse
 
 resources:
-  - resources/daemonset.yaml
+  - resources/namespace.yaml
+  - resources/statefulset.yaml
   - resources/service.yaml
 
 configMapGenerator:
-  - name: clickhouse-configd
+  - name:     clickhouse-configd
     behavior: create
     files:
-      - config.d/cluster.xml
-      - config.d/keeper.xml
-      - config.d/listen_host.xml
-      - config.d/logger.xml
-      - config.d/misc.xml
-      - config.d/path.xml
+      - files/config.d/cluster.xml
+      - files/config.d/keeper.xml
+      - files/config.d/listen_host.xml
+      - files/config.d/logger.xml
+      - files/config.d/misc.xml
+      - files/config.d/path.xml
+  - name:     clickhouse-usersd
+    behavior: create
+    files:
+      - files/users.d/default.xml
