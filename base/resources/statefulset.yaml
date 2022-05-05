@@ -8,6 +8,9 @@ spec:
   replicas:    3
   template:
     spec:
+      securityContext:
+        runAsUser:  999
+        runAsGroup: 999
       containers:
         - name:            clickhouse
           image:           clickhouse/clickhouse-server:latest
@@ -18,7 +21,7 @@ spec:
             - |
               set -eux
               export POD_SEQ=$(( ${POD_NAME#clickhouse-} + 1 ))
-              exec clickhouse server -C /etc/clickhouse-server/config.xml
+              exec clickhouse-server -C /etc/clickhouse-server/config.xml
           env:
             - name: POD_NAME
               valueFrom:
