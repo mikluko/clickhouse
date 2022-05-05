@@ -7,6 +7,6 @@ components:
   - ../../base
 
 images:
-  - name:    yandex/clickhouse-server
+  - name:    clickhouse/clickhouse-server
     newName: ghcr.io/mikluko/clickhouse/clickhouse-server
     newTag:  22.2.1
