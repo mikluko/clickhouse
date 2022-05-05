@@ -2,10 +2,17 @@
 
 Clickhouse cluster for local development. Tested on https://github.com/k3s-io/k3s[k3s].
 
+== Tasks
+
 Run with official Docker image:
 
-    kubectl apply -k ./overlays/v22.1
+    task apply
 
-Run with custom-built AARM64 image (Apple M1):
+Run with custom Kustomization overlay:
 
-    kubectl apply -k ./overlays/v22.2-aarm64
+    OVERLAY=v22.2-aarm task apply
+
+== Links
+
+    * https://taskfile.dev[Task]
+    * https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/[Kustomizations]

@@ -1,0 +1,20 @@
+version: '3'
+
+vars:
+  overlay: '{{ .OVERLAY | default "v22.3-lts" }}'
+
+tasks:
+
+  default:
+    deps:
+      - apply
+
+  apply:
+    desc: deploy clickhouse cluster
+    cmds:
+      - kubectl apply -k overlays/{{ .overlay }}
+
+  delete:
+    desc: delete clickhouse cluster
+    cmds:
+      - kubectl delete -k overlays/{{ .overlay }}
