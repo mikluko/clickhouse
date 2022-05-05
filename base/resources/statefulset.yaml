@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
         - name:            clickhouse
-          image:           yandex/clickhouse-server:latest
+          image:           clickhouse/clickhouse-server:latest
           imagePullPolicy: IfNotPresent
           command:
             - sh
@@ -38,6 +38,9 @@ spec:
             - mountPath: /etc/clickhouse-server/config.d
               name:      clickhouse-configd
               readOnly:  true
+            - mountPath: /etc/clickhouse-server/users.d
+              name:      clickhouse-usersd
+              readOnly:  true
             - mountPath: /var/lib/clickhouse
               name:      clickhouse-data
           resources:
@@ -51,6 +54,10 @@ spec:
         - name: clickhouse-configd
           configMap:
             name:     clickhouse-configd
+            optional: false
+        - name: clickhouse-usersd
+          configMap:
+            name:     clickhouse-usersd
             optional: false
   volumeClaimTemplates:
     - metadata:
