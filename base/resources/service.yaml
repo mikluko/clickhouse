@@ -9,9 +9,7 @@ spec:
   ports:
     - name:       http
       port:       8123
-      nodePort:   8123
       targetPort: http
     - name:       native
       port:       9000
-      nodePort:   9000
       targetPort: native
