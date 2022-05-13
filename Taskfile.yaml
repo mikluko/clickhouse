@@ -6,8 +6,8 @@ vars:
 tasks:
 
   default:
-    deps:
-      - apply
+    cmds:
+      - task --list
 
   apply:
     desc: deploy clickhouse cluster
